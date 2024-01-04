@@ -22,7 +22,6 @@ datasets/
 *.png
 !assets/*.png
 *.jpg
-*.jpeg
 
 saved_models/
 model_storage/
