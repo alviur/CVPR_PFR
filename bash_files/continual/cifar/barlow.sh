@@ -28,7 +28,6 @@ python3 main_continual.py \
     --name barlow-cifar100 \
     --project ever-learn \
     --entity unitn-mhug \
-    --wandb \
     --save_checkpoint \
     --disable_knn_eval \
     --method barlow_twins \
