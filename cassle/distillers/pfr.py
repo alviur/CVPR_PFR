@@ -24,10 +24,10 @@ def pfr_distill_wrapper(Method=object):
             self.distill_scale_loss = distill_scale_loss
 
             self.distill_predictor = nn.Sequential(
-                nn.Linear(output_dim, distill_proj_hidden_dim),
+                nn.Linear(self.features_dim, distill_proj_hidden_dim),
                 nn.BatchNorm1d(distill_proj_hidden_dim),
                 nn.ReLU(),
-                nn.Linear(distill_proj_hidden_dim, output_dim),
+                nn.Linear(distill_proj_hidden_dim, self.features_dim),
             )
 
             # PFR criterion
