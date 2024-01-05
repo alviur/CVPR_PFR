@@ -28,7 +28,6 @@ python3 main_continual.py \
     --name barlow-cifar100-pfr \
     --project ever-learn \
     --entity unitn-mhug \
-    --wandb \
     --save_checkpoint \
     --method barlow_twins \
     --proj_hidden_dim 2048 \
