@@ -35,4 +35,5 @@ python3 main_continual.py \
     --output_dim 2048 \
     --scale_loss 0.1 \
     --distiller decorrelative \
+    --distill_lamb 25 \
     --pretrained_model $PRETRAINED_PATH

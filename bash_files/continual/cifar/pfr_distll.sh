@@ -3,9 +3,9 @@ python3 main_continual.py \
     --encoder resnet18 \
     --data_dir $DATA_DIR \
     --split_strategy class \
-    --max_epochs 2 \
+    --max_epochs 500 \
     --num_tasks 5 \
-    --task_idx 0 \
+    --task_idx 1 \
     --gpus 0 \
     --num_workers 4 \
     --precision 16 \
@@ -25,7 +25,7 @@ python3 main_continual.py \
     --hue 0.1 \
     --gaussian_prob 0.0 0.0 \
     --solarization_prob 0.0 0.2 \
-    --name barlow-cifar100 \
+    --name barlow-cifar100-pfr \
     --project ever-learn \
     --entity unitn-mhug \
     --wandb \
@@ -33,4 +33,6 @@ python3 main_continual.py \
     --method barlow_twins \
     --proj_hidden_dim 2048 \
     --output_dim 2048 \
-    --scale_loss 0.1
+    --scale_loss 0.1 \
+    --distiller pfr \
+    --pretrained_model $PRETRAINED_PATH

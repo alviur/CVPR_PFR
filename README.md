@@ -13,7 +13,36 @@ This is the official repository for the paper:
     
 </p>
 
+NOTE: In order to make benchmarking easier, the current version of this code works inside the [CaSSLe](https://github.com/DonkeyShot21/cassle) implementation.
 
+# Installation
+Use the following commands to create an environment and install the required packages (needs `conda`):
+```
+conda create --name cassle python=3.8
+conda activate cassle
+conda install pytorch=1.10.2 torchvision cudatoolkit=11.3 -c pytorch
+pip install pytorch-lightning==1.5.4 lightning-bolts wandb sklearn einops
+pip install --extra-index-url https://developer.download.nvidia.com/compute/redist --upgrade nvidia-dali-cuda110
+```
+
+# Commands
+Here below you can find a few example commands for running our code. The bash scripts with full training configurations for our continual and linear evaluation experiments can be found in the `bash_files` folder. Use our `job_launcher.py` to launch continual self-supervised learning experiments. We also provide example code for launching jobs with SLURM where you can pass the desired configuration for your job (bash script, data directory, number of GPUs, walltime, etc...).
+
+NOTE: each experiment uses a different number of gpus (1 for CIFAR100, 2 for ImageNet100 and 4 for DomainNet). You can change this setting directly in the bash scripts.
+
+## Fine-tuning
+### CIFAR100
+E.g. running Barlow Twins:
+```
+DATA_DIR=/path/to/data/dir/ CUDA_VISIBLE_DEVICES=0 python job_launcher.py --script bash_files/continual/cifar/barlow.sh
+```
+## PFR
+After running fine-tuning, you can also run PFR by just loading the checkpoint of the first task. You will find all the checkpoints in your experiment directory (defaults to `"./experiments"`). Check the id of your run on WandB to make sure you are loading the correct checkpoint.
+### CIFAR100
+E.g. running Barlow Twins + PFR:
+```
+PRETRAINED_PATH=/path/to/task0/checkpoint/ DATA_DIR=/path/to/data/dir/ CUDA_VISIBLE_DEVICES=0 python job_launcher.py --script bash_files/continual/cifar/pfr_distill.sh
+```
 
 # Citation
 If you like our work, please cite our [paper](https://openaccess.thecvf.com/content/CVPR2022W/CLVision/html/Gomez-Villa_Continually_Learning_Self-Supervised_Representations_With_Projected_Functional_Regularization_CVPRW_2022_paper.html):
