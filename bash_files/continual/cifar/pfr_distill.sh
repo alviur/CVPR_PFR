@@ -31,8 +31,8 @@ python3 main_continual.py \
     --save_checkpoint \
     --method barlow_twins \
     --disable_knn_eval \
-    --proj_hidden_dim 2048 \
-    --output_dim 2048 \
+    --proj_hidden_dim 256 \
+    --output_dim 512 \
     --scale_loss 0.1 \
     --distiller pfr \
     --pretrained_model $PRETRAINED_PATH
