@@ -30,6 +30,7 @@ python3 main_continual.py \
     --entity unitn-mhug \
     --wandb \
     --save_checkpoint \
+    --disable_knn_eval \
     --method barlow_twins \
     --proj_hidden_dim 2048 \
     --output_dim 2048 \
